@@ -1,13 +1,17 @@
 #!/bin/bash
 
-# It was difficult...
-layout=$(hyprctl devices -j | jq -r '.keyboards[] | .active_keymap' | tail -n2 | head -n1)
-language="??"
+layout=$(hyprctl devices -j | jq -r '.keyboards[-2].active_keymap')
 
-if [[ "$layout" == "English (US)" ]]; then
-  language="EN"
-elif [[ "$layout" == "Ukrainian" ]]; then
-  language="UA"
-fi
+case "$layout" in
+  "English (US)")
+    language="🇺🇸"
+    ;;
+  "Ukrainian")
+    language="🇺🇦"
+    ;;
+  *)
+    language="??"
+    ;;
+esac
 
-printf "%s   " "$language"
+printf "%s" "$language"

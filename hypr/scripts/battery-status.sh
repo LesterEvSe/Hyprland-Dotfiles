@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# status="$(acpi -b | grep -ioh "\w*charging\w*")"
-# level="$(acpi -b | grep -o -P "[0-9]+(?=%)")"
-
 status="$(cat /sys/class/power_supply/BAT1/status)"
 level="$(cat /sys/class/power_supply/BAT1/capacity)"
 
