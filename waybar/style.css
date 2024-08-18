@@ -24,32 +24,6 @@ window#waybar {
   background-color: #1a1c2b;
 }
 
-/* #cpu, */
-/* #memory */
-/* #temperature{ */
-/*   font-size: 15px; */
-/*   margin-top: 5px; */
-/*   margin-bottom: 5px; */
-/*   background-color: #2a2d45; */
-/* } */
-/**/
-/* #cpu { */
-/*   color: #eed49f; */
-/*   padding: 0px 10px 0px 12px; */
-/*   border-radius: 5px 0px 0px 5px; */
-/* } */
-/**/
-/* #memory { */
-/*   color: #a6da95; */
-/*   padding: 0px 10px 0px 0px; */
-/* } */
-/**/
-/* #temperature { */
-/*   color: #8aadf4; */
-/*   padding: 0px 12px 0px 0px; */
-/*   border-radius: 0px 5px 5px 0px; */
-/* } */
-
 #cpu,
 #memory,
 #temperature {
@@ -154,7 +128,6 @@ window#waybar {
 
 #battery {
   color: #a6da95;
-  /* margin: 0px 10px 0px 0px; */
 }
 
 #pulseaudio,
@@ -179,11 +152,6 @@ window#waybar {
 
 #custom-right-arr {
   color: #8aadf4;
-  background-color: #1a1c2b;
-}
-
-#custom-pacman {
-  color: #68b0d6;
   background-color: #1a1c2b;
 }
 
@@ -250,6 +218,3 @@ window#waybar {
 #custom-playerctl {
   color: #ffffff;
 }
-
-/*# sourceMappingURL=style.css.map */
-

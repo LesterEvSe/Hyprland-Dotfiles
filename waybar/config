@@ -49,10 +49,9 @@
     "exec": "bash ~/.config/waybar/scripts/battery-brightness.sh"
   },
   "disk": {
-    "interval": 1,
+    "interval": 60,
     "format": "<span color=\"#68b0d6\"> </span> {}%",
-    "on-click": "kitty & ranger /",
-    "on-click-right": "filelight /home/"
+    "on-click": "kitty ranger"
   },
   "hyprland/workspaces": {
     "all-outputs": true,
@@ -143,7 +142,7 @@
     "tooltip": false,
     "format-muted": "",
     "format-icons": {
-      "default": ["󰝟", "", "󰕾" , ""]
+      "default": ["󰝟", "", "󰕾", ""]
     },
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol"
@@ -170,17 +169,11 @@
   "custom/separator": {
     "format": " "
   },
-  "custom/window-name": {
-    "format": " <b>{}</b>",
-    "interval": 1,
-    "exec": "hyprctl activewindow | grep class | awk '{print $2}'"
-  },
-  "custom/window-icon": {},
 
   "temperature": {
-    "thermal-zone": 0,
-    "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C",
+    "thermal-zone": 2,
+    "critical-threshold": 90,
+    "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C"
   },
 
