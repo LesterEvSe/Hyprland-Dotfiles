@@ -1,6 +1,6 @@
 <div align="center">
   
-# Hyprland Dotfiles 
+# 💻 Hyprland Dotfiles 💻
 
 ![image](Pictures/main-screen.png)
 
