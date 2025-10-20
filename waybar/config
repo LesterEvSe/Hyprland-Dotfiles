@@ -51,7 +51,7 @@
   "disk": {
     "interval": 60,
     "format": "<span color=\"#68b0d6\"> </span> {}%",
-    "on-click": "kitty ranger"
+    "on-click": "filelight"
   },
   "hyprland/workspaces": {
     "all-outputs": true,
@@ -104,7 +104,8 @@
     "format": "<b>{:%H:%M:%S}</b>",
     "format-alt": "<b>{:%a, %d %b %Y}</b>",
     "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "interval": 1
+    "interval": 1,
+    "timezone": "Europe/Kiev"
   },
   "cpu": {
     "interval": 10,
