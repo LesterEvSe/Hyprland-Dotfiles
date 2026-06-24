@@ -12,6 +12,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-alias H="Hyprland"
+alias H="start-hyprland"
 alias DD="dragon-drop -x -T"
 set -g fish_greeting ""

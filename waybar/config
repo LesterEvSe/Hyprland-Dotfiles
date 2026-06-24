@@ -105,7 +105,7 @@
     "format-alt": "<b>{:%a, %d %b %Y}</b>",
     "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
     "interval": 1,
-    "timezone": "Europe/Kiev"
+    "timezone": "Europe/Kyiv"
   },
   "cpu": {
     "interval": 10,
