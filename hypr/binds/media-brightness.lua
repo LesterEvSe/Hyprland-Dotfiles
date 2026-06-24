@@ -1,8 +1,3 @@
--- Notes:
---   * `binde` (repeatable) -> { repeating = true }
---   * laptop media/brightness keys -> add { locked = true } so they fire
---     even when the session is locked.
-
 ----------------
 -- BRIGHTNESS --
 ----------------

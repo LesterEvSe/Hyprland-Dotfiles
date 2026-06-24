@@ -4,7 +4,7 @@ local terminal = _G.terminal or "kitty"
 -------------------
 -- SCREENSHOTS ----
 -------------------
--- Shell command pieces (kept identical to your conf for behaviour parity)
+-- Shell command pieces
 local slurp_cmd       = "slurp -o -d -w 2 -B 00000000 -b 00000000 -s 00000000 -c"
 local grim_cmd        = "grim -o $(hyprctl activeworkspace | grep -Po '(?<=\\d\\) on monitor ).*?(?=:)') -t png -l 6 -"
 local screenshot_path = "tee ~/Pictures/screenshots/screenshot-$(date +'%d.%m.%y-%H:%M:%S').png"
@@ -53,10 +53,10 @@ hl.bind("CTRL + " .. mod .. " + S", hl.dsp.exec_cmd("steam"))
 -- NOTE: if you're using uwsm, the wiki recommends `uwsm stop` over hl.dsp.exit().
 -- See https://wiki.hypr.land/Configuring/Basics/Dispatchers/ (Warning box).
 hl.bind("ALT + M", hl.dsp.exit())
-hl.bind("ALT + C", hl.dsp.window.close())               -- old: killactive
+hl.bind("ALT + C", hl.dsp.window.close())
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/lock-and-sleep.sh"))
 
--- Night mode (gammastep)
+-- Night mode
 hl.bind("CTRL + ALT + N", hl.dsp.exec_cmd("gammastep -O 3000"))
 hl.bind("CTRL + ALT + M", hl.dsp.exec_cmd("pkill gammastep"))
 
@@ -82,10 +82,8 @@ hl.bind(mod .. " + down",  hl.dsp.focus({ direction = "down"  }))
 ----------------------
 -- WORKSPACES --------
 ----------------------
--- SUPER + [0-9]            -> go to workspace
--- SUPER + SHIFT + [0-9]    -> send window to workspace
 for i = 1, 10 do
-    local key = i % 10 -- 10 maps to "0"
+    local key = i % 10
     hl.bind(mod .. " + " .. key,            hl.dsp.focus({ workspace = i }))
     hl.bind(mod .. " + SHIFT + " .. key,    hl.dsp.window.move({ workspace = i }))
 end
@@ -94,10 +92,7 @@ end
 -----------------------
 -- SPECIAL WORKSPACE --
 -----------------------
--- Hide active window into the special workspace (silent: don't switch view)
--- NOTE: silent move via `silent = true` on the move dispatcher. If that flag
--- isn't recognised in your build, fall back to:
---   hl.dispatch(hl.dsp.exec_cmd("hyprctl dispatch movetoworkspacesilent special"))
+-- Hide active window into the special workspace (don't switch view)
 hl.bind(mod .. " + minus", hl.dsp.window.move({ workspace = "special", silent = true }))
 
 -- Show / cycle through hidden windows: toggle special, cycle, then pull current to active ws

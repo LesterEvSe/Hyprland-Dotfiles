@@ -1,7 +1,3 @@
--- Ported from hyprland.conf (pre-0.55 hyprlang syntax) to Lua (0.55+).
--- Files are sourced via require(); each call creates its own Lua scope,
--- so an error in one module doesn't kill the others.
-
 ------------------
 ---- MONITORS ----
 ------------------
@@ -18,7 +14,6 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 -- Globals so the binds module can reference them.
--- (In Lua require() each file has its own scope, so we attach to _G.)
 _G.mainMod  = "SUPER"
 _G.terminal = "kitty"
 
@@ -27,9 +22,8 @@ _G.terminal = "kitty"
 ---- AUTOSTART ----
 -------------------
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
--- Old: exec-once = waybar & hyprpaper
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar & hyprpaper")
+    hl.exec_cmd("waybar & hyprpaper & gammastep -O 3000")
     hl.exec_cmd(
         "swayidle -w " ..
         "timeout 840 'brightnessctl set 30%' resume 'brightnessctl set 100%' " ..
@@ -56,7 +50,6 @@ hl.config({
         border_size = 2,
 
         col = {
-            -- Old: col.active_border = rgba(009c73aa) rgba(00ff99aa) 45deg
             active_border   = { colors = { "rgba(009c73aa)", "rgba(00ff99aa)" }, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
@@ -104,7 +97,6 @@ hl.config({
     },
 })
 
--- Animations: your old custom bezier + animations
 hl.curve("myBezier", { type = "bezier", points = { {0.05, 0.9}, {0.1, 1.05} } })
 
 hl.animation({ leaf = "windows",     enabled = true, speed = 7,  bezier = "myBezier" })
@@ -136,9 +128,7 @@ hl.config({
 })
 
 -- gestures.workspace_swipe was removed in the new gestures system.
--- Your old config had it disabled, so we simply do not register a gesture.
--- If you want a swipe gesture later, uncomment and tweak:
--- hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
 -- Per-device config example (kept from your conf)
 hl.device({

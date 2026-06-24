@@ -1,9 +1,5 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
---
--- In the new API, every rule takes `match = { ... }` (selector) and the
--- effect goes at the top level of the table. Both `class` and `title`
--- accept regex strings (the leading ^( ... )$ from your old config works).
 
 -- Ignore maximize requests from all apps
 hl.window_rule({
