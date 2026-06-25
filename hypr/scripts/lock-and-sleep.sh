@@ -1,3 +1,3 @@
 #!/bin/bash
-pgrep -x hyprlock >/dev/null || hyprlock --immediate
+hyprlock &
 systemctl suspend

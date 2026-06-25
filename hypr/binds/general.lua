@@ -64,7 +64,6 @@ hl.bind("CTRL + ALT + M", hl.dsp.exec_cmd("pkill gammastep"))
 ---------------------------
 -- WINDOW MANIPULATION ----
 ---------------------------
--- Swap windows: SUPER + SHIFT + arrows
 -- NOTE: swap-by-direction is `hl.dsp.window.swap({ direction = ... })`; verify with
 -- `hyprctl repl 'hl.dsp.window.swap'` if you hit an error.
 hl.bind(mod .. " + SHIFT + left",  hl.dsp.window.swap({ direction = "left"  }))
@@ -79,8 +78,26 @@ hl.bind(mod .. " + up",    hl.dsp.focus({ direction = "up"    }))
 hl.bind(mod .. " + down",  hl.dsp.focus({ direction = "down"  }))
 
 
+------------------
+---- MONITORS ----
+------------------
+-- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+hl.monitor({
+    output   = "HDMI-A-1",
+    mode     = "1920x1080@120.00",
+    position = "0x0",
+    scale    = 1,
+})
+
+hl.monitor({
+    output   = "eDP-1",
+    mode     = "1920x1200@180.00",
+    position = "0x1080",
+    scale    = 1,
+})
+
 ----------------------
--- WORKSPACES --------
+----- WORKSPACES -----
 ----------------------
 for i = 1, 10 do
     local key = i % 10
@@ -88,20 +105,41 @@ for i = 1, 10 do
     hl.bind(mod .. " + SHIFT + " .. key,    hl.dsp.window.move({ workspace = i }))
 end
 
+-- Bind specific workspaces to the external monitor (Top)
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "6", monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "7", monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "8", monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "10", monitor = "HDMI-A-1" })
+
+-- Bind the rest to the laptop (Bottom)
+hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "3", monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "4", monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "5", monitor = "eDP-1" })
+
 
 -----------------------
 -- SPECIAL WORKSPACE --
 -----------------------
--- Hide active window into the special workspace (don't switch view)
-hl.bind(mod .. " + minus", hl.dsp.window.move({ workspace = "special", silent = true }))
+-- Hide active window
+hl.bind(mod .. " + minus", hl.dsp.window.move({ workspace = "special:magic", follow = false }))
 
--- Show / cycle through hidden windows: toggle special, cycle, then pull current to active ws
+-- Restore/Pop the window back out
 hl.bind(mod .. " + equal", function()
-    hl.dispatch(hl.dsp.workspace.toggle_special())                        -- toggle special
-    hl.dispatch(hl.dsp.window.cycle_next({ reverse = true }))             -- FIFO: oldest first
-    hl.dispatch(hl.dsp.window.move({ workspace = "+0" }))                 -- pull into current ws
+    -- 1. Fetch the list of windows currently hiding in your special workspace
+    local magic_windows = hl.get_windows({ workspace = "special:magic" })
+    
+    -- 2. Make sure the workspace isn't empty before trying to do anything
+    if magic_windows then
+        -- 3. Loop through the hidden windows, move the first one to the active workspace (+0), and stop
+        for _, win in pairs(magic_windows) do
+            hl.dispatch(hl.dsp.window.move({ window = win, workspace = "+0" }))
+            break
+        end
+    end
 end)
-
 
 ----------------------
 -- FLOATING / MOUSE --
