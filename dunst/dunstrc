@@ -1,0 +1,27 @@
+[global]
+    width = 300
+    height = 80
+    origin = top-left
+    offset = 20x20
+    
+    # This is the magic word that forces it OVER your fullscreen games
+    layer = overlay
+    
+    font = Sans 12
+    corner_radius = 5
+    
+    # Default colors (Dark blue/grey background, light text)
+    background = "#1a1c2b"
+    foreground = "#cdd6f4"
+    frame_color = "#8aadf4"
+    frame_width = 2
+    
+    # How long normal notifications stay (in seconds)
+    timeout = 5
+
+[urgency_critical]
+    # Critical colors (Bright red background, dark text for maximum visibility)
+    background = "#ff5555"
+    foreground = "#2a2d45"
+    frame_color = "#ff5555"
+    timeout = 5

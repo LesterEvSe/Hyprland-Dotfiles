@@ -85,7 +85,7 @@ stage_userspace() {
         pipewire pipewire-pulse wireplumber pavucontrol \
         grim slurp swappy wl-clipboard \
         brightnessctl playerctl swayidle gammastep \
-        jq htop
+        jq htop dunst libnotify
 }
 
 

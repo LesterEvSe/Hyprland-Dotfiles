@@ -15,6 +15,7 @@ declare -A MAP=(
     [fish]=fish
     [kitty]=kitty
     [waybar]=waybar
+    [dunst]=dunst
 )
 
 CONFIG="$HOME/.config"
