@@ -16,6 +16,7 @@ declare -A MAP=(
     [kitty]=kitty
     [waybar]=waybar
     [dunst]=dunst
+    [gammastep]=gammastep
 )
 
 CONFIG="$HOME/.config"

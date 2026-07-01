@@ -57,8 +57,11 @@ hl.bind("ALT + C", hl.dsp.window.close())
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/lock-and-sleep.sh"))
 
 -- Night mode
-hl.bind("CTRL + ALT + N", hl.dsp.exec_cmd("gammastep -O 3000"))
+hl.bind("CTRL + ALT + N", hl.dsp.exec_cmd("gammastep -O 4000"))
 hl.bind("CTRL + ALT + M", hl.dsp.exec_cmd("pkill gammastep"))
+
+-- hl.bind("CTRL + ALT + N", hl.dsp.exec_cmd("bash ~/.config/gammastep/scripts/gammastep-toggle"))
+-- hl.bind("CTRL + ALT + M", hl.dsp.exec_cmd("pkill -x gammastep; gammastep -x"))
 
 
 ---------------------------

@@ -83,6 +83,7 @@ stage_userspace() {
     sudo pacman -S --noconfirm --needed \
         kitty fish \
         pipewire pipewire-pulse wireplumber pavucontrol \
+        bluez bluez-utils blueman \
         grim slurp swappy wl-clipboard \
         brightnessctl playerctl swayidle gammastep \
         jq htop dunst libnotify

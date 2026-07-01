@@ -11,9 +11,13 @@ _G.terminal = "kitty"
 -------------------
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 hl.on("hyprland.start", function()
+    -- Do not chaining, so we can understand which one failed, if any
     hl.exec_cmd("dunst &")
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("blueman-applet")
+    hl.exec_cmd("gammastep -O 3000")
     hl.exec_cmd("bash ~/.config/hypr/scripts/temperature-alert.sh &")
-    hl.exec_cmd("waybar & hyprpaper & gammastep -O 3000")
     
     hl.exec_cmd(
         "swayidle -w " ..
